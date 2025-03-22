@@ -1,0 +1,5 @@
+Passenger,Gulfstream G5,560.0,1399,20000000
+CombatReady,Supermarine Spitfire,480.0,1200,90000
+CargoCarrier,Lockheed C130,400.0,2400,12000000
+CombatReady,A-10 Warthog,400.0,900,8000000
+Passenger,
