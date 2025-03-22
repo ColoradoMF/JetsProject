@@ -16,12 +16,12 @@ public abstract class Jet {
 
 public void fly() {
 	System.out.println("This jet is model " + model + ", costs " + price + "  At this moment it is now flying at " + speed + 
-			" mph (" + getSpeedInMach(speed) + " mach), with a range " + range);
+			" mph and can fly at this speed for " + getRangeInHours() + " hour with a range " + range + " miles.");
 }
 
-public double getSpeedInMach() {
-	// CONVERT MPH TO MACH 
-	return 0.0; // FIXME
+public double getRangeInHours() {
+	double rangeInHours = range / speed;
+	return rangeInHours; // FIXME
 }
 	
 // cargo jet implements cargoCarrier interface	

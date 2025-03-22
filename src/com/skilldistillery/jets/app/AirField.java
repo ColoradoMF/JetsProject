@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import com.skilldistillery.jets.entities.CargoPlane;
 import com.skilldistillery.jets.entities.Fighter;
@@ -13,27 +12,27 @@ import com.skilldistillery.jets.entities.Jet;
 import com.skilldistillery.jets.entities.JetImpl;
 
 public class AirField {
-	
-	private Scanner scanner = new Scanner(System.in);
 
-		// using an array list data structure to hold the collection of Jet objects
-	private List<Jet> fleet = new ArrayList<>();
+	// using an array list data structure to hold the collection of Jet objects
+	private List<Jet> fleet; 
 
-		// reading in the jets from a text file
+	// reading in the jets from a text file
 	public AirField() {
-			// load the data about jets from text file
+		// load the data about jets from text file
 		loadJetsFromFile("jetData.txt");
 	}
 
-			//TODO BufferedReader recipe here to read from fileName with Try/Catch
-			//see nameSeperator and Planets examples of how to read jets into the ArrayList from text file.  
-	
+	// TODO BufferedReader recipe here to read from fileName with Try/Catch
+	// see nameSeperator and Planets examples of how to read jets into the ArrayList
+	// from text file.
+
 	public List<Jet> loadJetsFromFile(String fileName) {
-		try ( BufferedReader bufIn = new BufferedReader(new FileReader("jetData.txt")) ) {
+		try (BufferedReader bufIn = new BufferedReader(new FileReader("jetData.txt"))) {
+			setFleet(new ArrayList<>());
 			String line;
 			while ((line = bufIn.readLine()) != null) {
 				Jet j;
-	//			System.out.println(line);
+				// System.out.println(line);
 				String[] fields = line.split(",");
 				String category = fields[0];
 				String model = fields[1];
@@ -43,35 +42,109 @@ public class AirField {
 				switch (category) {
 				case "Passenger":
 					j = new JetImpl(model, speed, range, price);
-					fleet.add(j);
+					getFleet().add(j);
 					break;
-					
+
 				case "CombatReady":
 					j = new Fighter(model, speed, range, price);
-					fleet.add(j);
+					getFleet().add(j);
 					break;
-					
-				case "Cargo":
-					j = new CargoPlane(model, speed, range, price);
-					fleet.add(j);
-					break;
-							}
-			}
-			}
 
-		catch(IOException e){
+				case "CargoCarrier":
+					j = new CargoPlane(model, speed, range, price);
+					getFleet().add(j);
+					break;
+				}
+			}
+		}
+
+		catch (IOException e) {
 			System.err.println(e);
 		}
-		return fleet;
-		
+		return getFleet();
+
 	}
-		
+
 	public void displayJets() {
-		System.out.println(fleet);
+		System.out.println(getFleet());
 	}
 
 //private class AirField {
 	public void quit() {
 		System.out.println("Hope you enjoyed your visit to check out the jets at the air field.");
+	}
+
+	public void flyJets() {
+		for (Jet jet : getFleet()) {
+			jet.fly();
+		}
+	}
+
+	public void pickFastest() {
+		Jet fastestJet = getFleet().get(0);
+		for (Jet jet : getFleet()) {
+			if (jet.getSpeed() > fastestJet.getSpeed()) {
+				fastestJet = jet;
+			}
+		}
+		System.out.println("The fastest jet in the fleet is :" + fastestJet);
+	}
+
+	public void pickLongestRange() {
+		Jet longestRange = getFleet().get(0);
+		for (Jet jet : getFleet()) {
+			if (jet.getRange() > longestRange.getRange()) {
+				longestRange = jet;
+			}
+		}
+		System.out.println("The jet with the longest range is :" + longestRange);
+	}
+
+	public void loadAllCargoPlanes() {
+		for (Jet jet : getFleet()) {
+			if (jet instanceof CargoPlane) {
+				((CargoPlane) jet).loadCargo();
+			}
+		}
+	}
+	
+	public void fight() {
+		for (Jet jet : getFleet()) {
+			if (jet instanceof Fighter) {
+				((Fighter) jet).fight();
+			}
+		}
+	}
+	
+	public void addPassengerJet(String model, double speed, int range, long price) {
+		Jet newJet = new JetImpl(model, speed, range, price);
+		getFleet().add(newJet);
+	}
+	
+	public void addCargoCarrier(String model, double speed, int range, long price) {
+		Jet newJet = new JetImpl(model, speed, range, price);
+		getFleet().add(newJet);
+	}
+	
+	public void addFighter(String model, double speed, int range, long price) {
+		Jet newJet = new Fighter(model, speed, range, price);
+		getFleet().add(newJet);
+	}
+
+	public void addCargoPlane(String model, double speed, int range, long price) {
+		Jet newJet = new CargoPlane(model, speed, range, price);
+		getFleet().add(newJet);		
+	}
+
+	public List<Jet> getFleet() {
+		return fleet;
+	}
+
+	public void setFleet(List<Jet> fleet) {
+		this.fleet = fleet;
+	}
+
+	public void removeSelectedJet(int indexChoice) {
+		fleet.remove(indexChoice);
 	}
 }

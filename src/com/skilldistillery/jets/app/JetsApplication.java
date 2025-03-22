@@ -1,5 +1,6 @@
 package com.skilldistillery.jets.app;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class JetsApplication {
@@ -44,46 +45,46 @@ public class JetsApplication {
 				continue;
 			}
 			
-////			case "2": {
-////				airField.flyJets();
-////				continue;
-////			}
-////			
-////			case "3": {
-////				airField.pickFastest();
-////				continue;
-////			}
-////			
-////			case "4": {
-////				airField.pickLongestRange();
-////				continue;
-////			}
-////			
-////			case "5": {
-////				airField.();
-////				
-////				continue;
-////			}
-//			
-//			case "6": {
-//				airField.();
-//				continue;
-//			}
-//			
-//			case "7": {
-//				airField.();
-//				continue;
-//			}
-//			
-//			case "8": {
-//				airField.();
-//				continue;
-//			}
-//			
-//			case "9": {
-//				airField.exit();
-//				menuLoop = false;
-//				break;
+			case "2": {
+				airField.flyJets();
+				continue;
+			}
+			
+			case "3": {
+				airField.pickFastest();
+				continue;
+			}
+			
+			case "4": {
+				airField.pickLongestRange();
+				continue;
+			}
+			
+			case "5": {
+				airField.loadAllCargoPlanes();
+				continue;
+			}
+			
+			case "6": {
+				airField.fight();
+				continue;
+			}
+			
+			case "7": {
+				addJetToFleet();
+				continue;
+			}
+			
+			case "8": {
+				removeJetFromFleet();
+				continue;
+			}
+			
+			case "9": {
+				airField.quit();
+				menuLoop = false;
+				break;
+			}
 				
 			default:
 				System.out.println("Invalid selection, kindly key in a number between 1 and 9.");
@@ -102,16 +103,66 @@ public class JetsApplication {
 		System.out.println("=========================================");
 		System.out.println("== 1. List all jets in fleet.          ==");
 		System.out.println("== 2. Fly all jets in fleet.           ==");
-		System.out.println("== 3. View the 3 fastest jets.         ==");
+		System.out.println("== 3. View the fastest jet in fleet.   ==");
 		System.out.println("== 4. View the jet with longest range. ==");
 		System.out.println("== 5. Order all cargo jets loaded.     ==");
-		System.out.println("== 6. Dogfight a military jet.         ==");
+		System.out.println("== 6. Dogfight all military jets.      ==");
 		System.out.println("== 7. Add a new jet to the fleet.      ==");
 		System.out.println("== 8. Remove a jet from the fleet.     ==");
 		System.out.println("== 9. Quit and exit Jets application.  ==");
 		System.out.println("=========================================");
 	}
 	
+	private void addJetToFleet() {
+		String model;
+		double speed;
+		int range;
+		long price;
+		String category;
+		
+		System.out.println("What model of jet would you like to add? ");
+		model = scanner.nextLine();
+
+		System.out.println("What is the top speed of the jet you would like to add? ");
+		speed = scanner.nextDouble();
+		
+		System.out.println("What is the range of jet would you like to add? ");
+		range = scanner.nextInt();
+		
+		System.out.println("What is the price of the jet would you like to add? ");
+		price = scanner.nextLong();
+		scanner.nextLine();
+		
+		System.out.println("What is the category of the jet you'll to add to the fleet? ");
+		System.out.println("Press P to add a Passenger Jet");
+		System.out.println("Press C to add a Cargo Carrier Jet");
+		System.out.println("Press M to add a Military Fighter Jet");
+		category = scanner.nextLine();
+		
+		switch(category) {
+		case "P":
+			airField.addPassengerJet(model, speed, range, price);
+		case "C":
+			airField.addCargoPlane(model, speed, range, price);
+		case "M":
+			airField.addFighter(model, speed, range, price);
+		}
+	}
 	
-	
+	private void removeJetFromFleet() {
+			int indexChoice;
+			for (int i = 0; i < airField.getFleet().size(); i++) {
+				System.out.println((i+1) + ". " + airField.getFleet().get(i).getModel());
+			
+			}
+			System.out.println("Select the number of the jet would you like to remove.");
+			indexChoice = scanner.nextInt();
+			scanner.nextLine();
+			
+			indexChoice = indexChoice - 1;
+			airField.removeSelectedJet(indexChoice);
+	}
+		
 }
+	
+

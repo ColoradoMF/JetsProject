@@ -8,7 +8,6 @@ public class Fighter extends Jet {
 		
 	}
 
-	@Override
 	public void fight() {
 		System.out.println(getModel() + " orders received... PEW PEW");
 	}
