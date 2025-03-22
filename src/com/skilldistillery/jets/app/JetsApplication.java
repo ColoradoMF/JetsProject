@@ -35,6 +35,7 @@ public class JetsApplication {
 		while (menuLoop) {
 		displayUserMenu();
 		menuChoice = scanner.next();
+		scanner.nextLine();
 			
 		switch(menuChoice) {
 		
@@ -43,46 +44,46 @@ public class JetsApplication {
 				continue;
 			}
 			
-			case "2": {
-				airField.flyJets();
-				continue;
-			}
-			
-			case "3": {
-				airField.pickFastest();
-				continue;
-			}
-			
-			case "4": {
-				airField.pickLongestRange();
-				continue;
-			}
-			
-			case "5": {
-				airField.();
-				
-				continue;
-			}
-			
-			case "6": {
-				airField.();
-				continue;
-			}
-			
-			case "7": {
-				airField.();
-				continue;
-			}
-			
-			case "8": {
-				airField.();
-				continue;
-			}
-			
-			case "9": {
-				airField.exit();
-				menuLoop = false;
-				break;
+////			case "2": {
+////				airField.flyJets();
+////				continue;
+////			}
+////			
+////			case "3": {
+////				airField.pickFastest();
+////				continue;
+////			}
+////			
+////			case "4": {
+////				airField.pickLongestRange();
+////				continue;
+////			}
+////			
+////			case "5": {
+////				airField.();
+////				
+////				continue;
+////			}
+//			
+//			case "6": {
+//				airField.();
+//				continue;
+//			}
+//			
+//			case "7": {
+//				airField.();
+//				continue;
+//			}
+//			
+//			case "8": {
+//				airField.();
+//				continue;
+//			}
+//			
+//			case "9": {
+//				airField.exit();
+//				menuLoop = false;
+//				break;
 				
 			default:
 				System.out.println("Invalid selection, kindly key in a number between 1 and 9.");
@@ -91,7 +92,7 @@ public class JetsApplication {
 		
 		}
 	}
-	}
+//	}
 	
 	private void displayUserMenu() {
 		//TODO - sysouts to show main menu here so not in do - while loop
