@@ -80,7 +80,7 @@ public class AirField {
 		}
 	}
 
-	public void pickFastest() {
+	public void determineFastest() {
 		Jet fastestJet = getFleet().get(0);
 		for (Jet jet : getFleet()) {
 			if (jet.getSpeed() > fastestJet.getSpeed()) {
@@ -90,7 +90,7 @@ public class AirField {
 		System.out.println("The fastest jet in the fleet is :" + fastestJet);
 	}
 
-	public void pickLongestRange() {
+	public void determineLongestRange() {
 		Jet longestRange = getFleet().get(0);
 		for (Jet jet : getFleet()) {
 			if (jet.getRange() > longestRange.getRange()) {

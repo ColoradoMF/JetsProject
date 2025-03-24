@@ -51,12 +51,12 @@ public class JetsApplication {
 			}
 			
 			case "3": {
-				airField.pickFastest();
+				airField.determineFastest();
 				continue;
 			}
 			
 			case "4": {
-				airField.pickLongestRange();
+				airField.determineLongestRange();
 				continue;
 			}
 			

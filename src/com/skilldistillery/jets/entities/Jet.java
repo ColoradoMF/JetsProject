@@ -15,8 +15,8 @@ public abstract class Jet {
 
 
 public void fly() {
-	System.out.println("This jet is model " + model + ", costs " + price + "  At this moment it is now flying at " + speed + 
-			" mph and can fly at this speed for " + getRangeInHours() + " hour with a range " + range + " miles.");
+	System.out.println("This jet is model " + model + " which costs " + price + ".  Currently, it is flying at " + speed + 
+			" mph and can fly at this speed for " + getRangeInHours() + " hours with the range of " + range + " miles.");
 }
 
 public double getRangeInHours() {
@@ -24,7 +24,7 @@ public double getRangeInHours() {
 	return rangeInHours; // FIXME
 }
 	
-// cargo jet implements cargoCarrier interface	
+// cargo jet implements CargoCarrier interface	
 	public Jet(String model, double speed, int range, long price) {
 		super();
 		this.model = model;
