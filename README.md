@@ -19,15 +19,16 @@ The application allows a user to manage a fleet of Jets of various types through
 
 ## Technologies Used
  JavaSE 21
- 	File I/O
+ 	Reading into a data from a text file into a collection
     Abstract classes
     Interfaces
     Collections
  Eclipse IDE
 
  ## Lessons Learned
-  While only one abstract class can be directly inherited, multiple interfaces can be implemented by a class. 
+  While only one abstract class can be directly inherited, multiple interfaces can be implemented by a class.
   Abstract classes can extend and be extended by other abstract classes.
   Exception handling with try-catch.
-  Identifying members of various classes using for loops with the instanceof operator.
+  Identifying members of various classes with enhanced for loops to iterate through a collection using the instanceof operator.
   UML class diagrams.
+  ![Jets UML diagram](/jetsUML.png)

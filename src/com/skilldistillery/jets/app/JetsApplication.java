@@ -1,5 +1,6 @@
 package com.skilldistillery.jets.app;
 
+import java.io.PrintStream;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -159,8 +160,11 @@ public class JetsApplication {
 			indexChoice = scanner.nextInt();
 			scanner.nextLine();
 			
+			
 			indexChoice = indexChoice - 1;
+			//System.out.println(((PrintStream) airField(indexChoice)) + " removed from fleet.");
 			airField.removeSelectedJet(indexChoice);
+			
 	}
 		
 }
